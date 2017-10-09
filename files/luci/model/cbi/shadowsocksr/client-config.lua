@@ -55,6 +55,8 @@ local protocol = {
 	"auth_sha1_v4",
 	"auth_aes128_sha1",
 	"auth_aes128_md5",
+	"auth_chain_a",
+	"auth_chain_b",
 }
 
 obfs = {
@@ -63,6 +65,7 @@ obfs = {
 	"http_post",
 	"tls_simple",	
 	"tls1.2_ticket_auth",
+	"tls1.2_ticket_fastauth",
 }
 
 m = Map(shadowsocksr, translate("Edit ShadowSocksR Server"))
@@ -114,7 +117,7 @@ o.rmempty = false
 o = s:option(ListValue, "protocol", translate("Protocol"))
 for _, v in ipairs(protocol) do o:value(v) end
 o.rmempty = false
-
+o = s:option(Value, "protocol_param", translate("Protocol param(optional)"))
 
 o = s:option(ListValue, "obfs", translate("Obfs"))
 for _, v in ipairs(obfs) do o:value(v) end
